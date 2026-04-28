@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>เกมแยกหมวดหมู่หนังสือด้วยระบบทศนิยมดิวอี้</title>
+
+<style>
+body{
+font-family: Arial;
+text-align:center;
+background-image:url("bo.png");
+}
+.do-box{
+border: 3px solid #191817;
+padding: 15px;
+border-radius: 10px;
+width: 20%;
+margin: 20px auto;
+background-color: #FFCC00;
+box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+}
+.image-box{
+    vertical-align: middle;
+    margin-top: -20px;
+    margin-left: -9px;
+    border: 2px solid#fff;
+    box-shadow: 1 2px 8px ;
+    align-items:center;
+}
+.Organizer-box{
+background:white;
+border: 3px solid #191817;
+width:600px;
+height:300px;
+margin:auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+position: relative;
+}
+
+button{
+padding:10px;
+margin:5px;
+font-size:20px;
+margin-top: 30px;
+margin-left: -10px;
+border-radius:5px;
+border:none;
+background:hsl(207, 58%, 31%);
+color:white;
+}
+
+.name-list{   
+font-size:20px;
+color:rgb(234, 11, 145);
+margin-right: 10px 0;
+line-height:1.6;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 class="do-box">ผู้จัดทำ</h1>
+<div class="Organizer-box">
+<p class="image-box"><span class="icon"><img src="ta1.jpg"width="90"height="150"></span> </p>
+
+<h1 class="name-list"><h3>ชื่อ-สกุล นางสาวสุชานาฏ แต้มต่อผล</h3> 
+<h1 class="name-list"><h3>มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตปัตตานี</h3>
+<h1 class="name-list"><h3>คณะศึกษาศาสตร์</h3>
+<h1 class="name-list"><h3>สาขาเทคโนโลยีสารสนเทศและการประเมินทางการศึกษา</h3> 
+<a href="index.html"><button ondblclick="playClick()">กลับสู่หน้าแรก</button></a>
+<audio id="clickSound">
+    <source src="Click1.mp3"type="audio/mpeg">
+</audio>
+<script>
+   function playClick(){
+    let sound =document.getElementById(clickSound);
+    sound.CurrentTime=0;
+    sound.play();
+}
+</script>
+</body>
+</html>

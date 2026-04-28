@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>เกมแยกหมวดหมู่หนังสือด้วยระบบทศนิยมดิวอี้</title>
+
+<style>
+body{
+font-family: Arial;
+text-align:center;
+background-image:url("po2.gif");
+background-size: 100%;
+}
+.title-box{
+border: 3px solid #191817;
+padding: 15px;
+border-radius: 10px;
+text-align: center;
+width: 60%;
+margin: 20px auto;
+background-color: #FFCC00;
+box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+}
+.title-box image{
+    vertical-align: middle;
+    margin: top 20px;
+}
+.game-box{
+background:rgb(241, 233, 200);
+background-image:url("bk12.gif");
+border: 3px solid #191817;
+width:650px;
+height:500px;
+margin:auto;
+padding:25px;
+border-radius:10px;
+ padding-bottom:100px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+position: relative;
+
+}
+
+button{
+padding:10px;
+font-size:16px;
+margin-bottom: 10px;
+cursor:pointer;
+border-radius:5px;
+border:none;
+background:#e20390;
+color:white;
+display: flex;
+flex-direction: row;  
+gap: 10px;     
+}
+.icon{
+    position:absolute;
+    top:-3px;
+    margin-left: -25px;
+}
+.timer{   
+font-size:18px;
+color:red;
+width: 29%;
+margin-right: -11px;
+position: absolute;
+margin-top: -10px;
+margin-right: -10px;
+}
+.button1{
+padding:10px;
+margin:5px;
+font-size:20px;
+margin-left: 240px;
+cursor:pointer;
+background:#0a0d79;
+color:rgb(255, 255, 255);
+margin-top: 20px;
+position: absolute;  
+bottom: 10px;         
+right: 10px;     
+}
+.button2{
+padding:10px;
+margin:5px;
+font-size:20px;
+margin-left: 240px;
+cursor:pointer;
+background:#dc0000;
+color:rgb(255, 255, 255);
+margin-top: 20px;
+position: absolute;  
+bottom: 10px;         
+left: -220px;     
+}
+#choices {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 100px;
+} 
+#result{
+  margin-top: 15px;
+  min-height: 30px;
+  font-size:18px;
+}
+.start-btn-box{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.popup{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.3);
+}
+.popup-content{
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  width: 200px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.popup-content h2{  /*จัดรูปแบบข้อความ*/
+  text-align: center;     
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+  gap: 8px; 
+  margin-left: -35px;               
+}
+.popup-content h2 img{  /*จัดรูปแบบโลโก้นาฬิกาหมดเวลา*/
+  display: inline-block;  
+  margin-left: -1px;     
+}
+.timeup-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.book{
+   text-align: center;     
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+  gap: 8px; 
+  margin-left: -35px;      
+}
+</style>
+
+</head>
+
+<body>
+<h1 class="title-box"><img src="icon1.png"width="45">เกมแยกหมวดหมู่หนังสือด้วยระบบทศนิยมดิวอี้<img src="icon2.png"width="45"></h1>
+
+<div class="game-box">
+  <div id="endPopup" class="popup">
+  <div class="popup-content">
+    <h2 class="timeup-title">
+      <img src="clok.png" width="30"><span>หมดเวลา!</span>
+    </h2>
+    <p id="finalScore"></p>
+    <button onclick="startGame()">เล่นอีกครั้ง</button>
+  </div>
+</div>
+
+<p class="timer"><span class="icon"><img src="clok.png"width="25" height="25"></span>
+    เวลาเหลือ:<span id="time"> 50 </span> วินาที </p>
+
+<h2 id="book">กดเริ่มเกม</h2>
+<div id="game"></div>
+
+<div id="choices"></div>
+
+<p id="result"></p>
+
+<p id="score" style="font-size: 20px; color: rgb(247, 1, 1);  position: absolute;  top: -10px; right: 15px;  font-weight: bold;
+  text-align: right;">
+  คะแนน: 0
+</p>
+
+<div class="start-btn-box">
+  <button id="startBtn" onclick="startGame()"
+    style="font-size: 20px; color: white; background-color: #e3a909d2; border: none; padding: 10px 20px; border-radius: 10px;">
+    เริ่มเกม
+  </button>
+  <div id="endScreen" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+">
+
+  <div style="
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+  ">
+
+    <button onclick="restartGame()" style="
+    margin-top:15px;
+    padding:10px 20px;
+    font-size:18px;
+    background:#28a745;
+    color:white;
+    border:none;
+    border-radius:10px;
+    ">
+      เล่นอีกครั้ง
+    </button>
+
+  </div>
+
+</div>
+</div>
+<script>
+function goHome(){
+  window.location.href = "index.html";}
+let books = [
+{title:"คู่มือการเขียนโปรแกรมภาษา C",category:"000",img:"progame.PNG"},
+{title:"ประวัติศาสตร์อเมริกา History of the United States",category:"900",img:"bk13.jpg"},
+{title:"จากนี้ไปฉันจะใจดีกับตัวเอง",category:"100",img:"kan.PNG"},
+{title:"วันพุทธ",category:"200",img:"paput.png"},
+{title:"ติวสอบเข้ม PAT 5",category:"300",img:"PAT.PNG"},
+{title:"LECTURE PHYSICS สรุปฟิสิกส์ มัธยมปลาย",category:"500",img:"haroy.PNG"},
+{title:"พื้นฐานการออกแบบสถาปัตยกรรม",category:"700",img:"satapa.PNG"},
+{title:"เตรียมพร้อมสอบจีน", category:"400", img:"testchini.PNG"},
+{title:"ขอแค่โอบกอดตัวเองไว้ในวันที่โลกใจร้าย",category:"800",img:"jannepa.PNG"},
+{title:"สูตรลับ 108 ทำอาหารให้อร่อย",category:"600",img:"menu.PNG"}
+];
+
+let categories = {
+"000":"ความรู้ทั่วไป",
+"100":"ปรัชญา",
+"200":"ศาสนา",
+"300":"สังคมศาสตร์",
+"400":"ภาษา",
+"500":"วิทยาศาสตร์",
+"600":"เทคโนโลยี",
+"700":"ศิลปะ",
+"800":"วรรณคดี",
+"900":"ประวัติศาสตร์"
+};
+
+let currentBook;
+let score = 0;
+let timeLeft = 50;
+let timer;
+
+
+function startGame(){
+score = 0;
+timeLeft = 50;//ตัวแปรเวลา
+
+document.getElementById("score").innerHTML = score;
+document.getElementById("result").innerHTML = "";
+
+startTimer();
+nextQuestion();
+}
+
+function startTimer(){
+  clearInterval(timer); 
+
+  timer = setInterval(function(){
+
+    if(timeLeft <= 0){
+      clearInterval(timer);
+      document.getElementById("time").innerHTML = 0; // ไม่ให้เวลานั้นติดลบ
+      endGame();
+      return; //  ให้เวลาหยุดทันที
+    }
+
+    timeLeft--;
+    document.getElementById("time").innerHTML = timeLeft;
+
+  },1000);
+  document.getElementById("endPopup").style.display = "none";
+}
+
+function nextQuestion(){//โค้ดสุ่มคำถาม
+
+let random = Math.floor(Math.random()*books.length);
+currentBook = books[random];
+
+document.getElementById("book").innerHTML =
+"หนังสือ: " + currentBook.title;
+
+document.getElementById("game").innerHTML = `
+<img src="${currentBook.img}" width="120">
+`;
+
+let html="";
+
+for(let code in categories){
+  html += "<button onclick='checkAnswer(\""+code+"\")'>"+
+  code+" "+categories[code]+"</button>";
+}
+
+document.getElementById("choices").innerHTML = html;
+}
+
+function checkAnswer(answer){//ตรวจคำตอบ
+
+if(timeLeft <= 0) return;
+
+if(answer === currentBook.category){
+document.getElementById("result").innerHTML="✅ ถูกต้อง";
+score++;
+}else{
+document.getElementById("result").innerHTML=
+"❌ ผิด หมวดที่ถูกคือ "+currentBook.category;
+}
+
+document.getElementById("score").innerHTML = score;
+
+nextQuestion();
+}
+
+function endGame(){
+  document.getElementById("book").innerHTML = "⏰ หมดเวลา";
+  document.getElementById("choices").innerHTML = "";
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("game").innerHTML = "";
+
+  document.getElementById("finalScore").innerHTML =
+    "คะแนนของคุณ: " + score;
+
+  document.getElementById("endPopup").style.display = "flex";
+}
+
+ function playClick(){
+  let sound = document.getElementById("clickSound");
+  sound.currentTime = 0;
+  sound.play();
+  
+}
+
+</script>
+<button class="button1" onclick="goHome()">
+  กลับสู่หน้าแรก <img src="home.png" width="20">
+<a href="Game Recommendation.html"><button class="button2" ondblclick="playClick()">คำแนะนำเกม<img src="icon 4.png"width="20" height="20"></button></a>
+    <source src="Click1.mp3"type="audio/mpeg">
+</audio>
+
+</body>
+</html>

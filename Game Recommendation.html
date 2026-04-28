@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>เกมแยกหมวดหมู่หนังสือด้วยระบบทศนิยมดิวอี้</title>
+
+<style>
+body{
+font-family: Arial;
+text-align:center;
+background-image:url("bo.png");
+}
+.title-box{
+border: 3px solid #191817;
+padding: 15px;
+border-radius: 10px;
+width: 16%;
+margin: 20px auto;
+background-color: #FFCC00;
+box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+}
+.Organizer-box{
+background:white;
+border: 3px solid #191817;
+width:410px;
+height:370px;
+margin:auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+position: relative;
+}
+
+button{
+padding:10px;
+margin:5px;
+font-size:20px;
+margin-top: 155px;
+margin-left: -10px;
+border-radius:5px;
+border:none;
+background:hsl(207, 58%, 31%);
+color:white;
+}
+
+.name-list1{   
+font-size:18px;
+color:rgb(234, 11, 145);
+margin-right: 10px 0;
+line-height:1.9;
+text-align: left;
+margin-top:-20px;
+}
+.name-list2{   
+font-size:17px;
+color:rgb(120, 38, 243);
+margin-right: 10px 0;
+line-height:1.6;
+text-align: left;
+margin-top:-10px;
+
+}
+.name-list3{   
+font-size:17px;
+color:rgb(120, 38, 243);
+margin-right: 10px 0;
+line-height:1.6;
+text-align: left;
+margin-top:-30px;
+}
+.name-list4{   
+font-size:17px;
+color:rgb(120, 38, 243);
+margin-right: 10px 0;
+line-height:1.6;
+text-align: left;
+margin-top:-30px;
+}
+.name-list5{   
+font-size:17px;
+color:rgb(120, 38, 243);
+margin-right: 10px 0;
+line-height:1.6;
+text-align: left;
+margin-top:-30px;
+}
+.name-list6{   
+font-size:18px;
+color:rgb(250, 3, 3);
+margin-right: 10px 0;
+line-height:1.6;
+text-align: left;
+margin-top:-30px;
+}
+.name-list7{   
+font-size:17px;
+color:rgb(250, 3, 3);
+margin-right: 10px 0;
+line-height:1.6;
+text-align: left;
+margin-top:-5px;
+}
+.name-list8{   
+font-size:17px;
+color:rgb(250, 3, 3);
+margin-right: 10px 0;
+line-height:1.6;
+text-align: left;
+margin-top:-30px;
+}
+.name-list9{   
+font-size:17px;
+color:rgb(250, 3, 3);
+margin-right: 10px 0;
+line-height:1.6;
+text-align: left;
+margin-top:-30px;
+}
+</style>
+
+</head>
+
+<body>
+<h1 class="title-box"><img src="icon1.png"width="45">แนะนำเกม<img src="icon2.png"width="45"></h1>
+<div class="Organizer-box">
+<p class="name-list1"><u>วิธีเล่น</u><img src="icon3.jpg"width="20"margin-right="20"></p>
+<p class="name-list2">1. เกมจะแสดง "ชื่อหนังสือ" ขึ้นมา 1 เรื่อง</p>ฺ
+<p class="name-list3">2. ผู้เล่นต้องเลือก "หมวดหมู่ดิวอี้"ที่ถูกต้อง</p>ฺ
+<p class="name-list4">3. ระบบจะตรวจคำตอบให้ทันทีหลังจากที่ผู้เล่นเลือกคำตอบ</p>ฺ
+<p class="name-list5">4. ถ้าตอบถูกผู้เล่นจะได้คะแนน</p>ฺ
+<p class="name-list6"><u>กติกา<img src="katika.png"width="20"margin-right="20"></u></p>
+<p class="name-list7">1. มีเวลาจำกัดในการตอบแต่ละข้อ</p>ฺ
+<p class="name-list8">2. ถ้าเลือกผิดจะไม่ได้คะแนนในข้อนั้น</p>ฺ
+<p class="name-list9">2. เล่นจนครบทุกข้อ ระบบจะสรุปคะแนนให้</p>ฺ
+
+<a href="index.html"><button blclick="playClick()">กลับสู่หน้าแรก</button></a>
+<audio id="clickSound">
+    <source src="Click1.mp3"type="audio/mpeg">
+</audio>
+<script>
+   function playClick(){
+    let sound =document.getElementById(clickSound);
+    sound.CurrentTime=0;
+    sound.play();
+}
+</script>
+</div>
+</body>
+</html>
