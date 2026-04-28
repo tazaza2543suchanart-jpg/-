@@ -1,160 +1,90 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-    <meta charset="UTF-8">
-    <title>เกมแยกหมวดหมู่หนังสือด้วยระบบทศนิยมดิวอี้</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
+<title>เกมแยกหมวดหมู่หนังสือ</title>
 
-            font-family: Arial;
-            text-align: center;
-            background-image: url("po1.gif");
-            background-size: 80%;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-            /* ทำให้ภาพคงที่เมื่อสกรอลล์ */
-            height: 100vh;
-            margin: 0;
-        }
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    height: 100vh;
 
-        .title-box {
-            border: 3px solid #191817;
-            padding: 15px;
-            border-radius: 10px;
-            width: 50%;
-            margin: 20px auto;
-            background-color: #FFCC00;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        }
+    background-image: url("po1.gif");
+    background-size: cover;
+    background-position: center;
+}
 
-        .title-box image {
-            vertical-align: middle;
-            margin: top 20px;
-            ;
-        }
+/* กล่องข้อความ */
+.container {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
 
-        .game-box {
-            background: white;
-            border: 3px solid #191817;
-            width: 600px;
-            height: 300px;
-            margin: auto;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
+/* ปุ่มคลิก */
+.btn {
+    width: 100%;
+    padding: 30px;
+    font-size: 35px;
+    border: none;
+    border-radius: 20px;
+    margin: 50px 0;
+    cursor: pointer;
+    color: white;
+}
 
-        .button1 {
-            border: none;
-            color: white;
-            width: 50%;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 40px;
-            margin: 4px 2px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-top: -200px;
-            margin-left: -150px;
-        }
+.start { background-color: #04AA6D; }
+.guide { background-color: #ff0804; }
 
-        .button2 {
-            border: none;
-            color: white;
-            width: 50%;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 40px;
-            margin: 64px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-top: 100px;
-            margin-left: -150px;
-        }
-
-        .button3 {
-            border: none;
-            color: white;
-            width: 50%;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 40px;
-            margin: 30px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-left: -150px;
-        }
-
-        .button1 {
-            background-color: #04AA6D;
-        }
-
-        /* Green */
-        .button2 {
-            background-color: #ff0804;
-        }
-
-
-        /* Red */
-
-        .timer {
-            font-size: 18px;
-            color: red;
-            width: 29%;
-            margin-right: -11px;
-            position: absolute;
-            margin-top: -10px;
-            margin-right: -10px;
-        }
-
-        .music-icon {
-            width: 40px;
-            position: fixed;
-            bottom: 600px;
-            right: 1300px;
-          
-        }
-
-        .music-icon:active {
-            transform: scale(0, 20);
-            filter: brightness(70%);
-        }
-        
-    </style>
+/* ไอคอนของเพลง */
+.music-icon {
+    width: 40px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+</style>
 
 </head>
 
 <body>
-   <div style="width: 300px;height: 200px;border: 1 px solid black;position: relative;">
-    <p style="position: absolute; right: -1050px; opacity: 0.4; margin-top: 50px;">By Suchanart Tametophon</p>
-   </div>
-    <br style="background-image: url('po1.gif'); background-size: cover; height: 100px;">
-    <a href="start.html"><button class="button1">เริ่มเกม</button></a><br>
-    <a href="Game Recommendation.html"><button class="button2">แนะนำเกม</button></a><br>
-    </div>
-    <audio id="sod" loop>
-    <source src="music1.mp3" type="audio/mpeg"><img src="mus.png" class="music-icon" onclick="toggleMusic()"></audio>
 
+<div class="container">
+
+    <a href="start.html">
+        <button class="btn start">เริ่มเกม</button>
+    </a>
+
+    <a href="Game Recommendation.html">
+        <button class="btn guide">แนะนำเกม</button>
+    </a>
+
+</div>
+
+<!-- ปุ่มเพลง -->
 <img src="mus.png" class="music-icon" onclick="toggleMusic()">
 
+<audio id="music" loop>
+    <source src="music1.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-   function button1(){
-    let music=document.getElementById(sod);
-    music.play();
-window.location.href="button1";
+function toggleMusic(){
+    let music = document.getElementById("music");
+    if(music.paused){
+        music.play();
+    }else{
+        music.pause();
+    }
 }
 </script>
-</body>
 
+</body>
 </html>
